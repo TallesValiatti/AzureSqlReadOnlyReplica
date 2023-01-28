@@ -19,11 +19,11 @@ namespace App.Application.Commands.Handlers
             var book = Book.Create(command.Name, command.NumberOfPages, command.ReleaseDate);
 
             if(await _unitOfWork.BookRepository.GetByNameAsync(book.Name) is not null)
-                throw new BusinessException($"Already exists a book with the name '{book.Name}'");
+                throw new BusinessException($"Already exists a book with name '{book.Name}'");
 
             foreach (var categoryId in command.Categories)
                 if(await _unitOfWork.CategoryRepository.GetByIdAsync(categoryId) is null)
-                    throw new BusinessException($"Not exists a category with Id '{categoryId}'");
+                    throw new BusinessException($"Does not exist a category with Id '{categoryId}'");
                 else
                     book.AddCategory(categoryId);
 

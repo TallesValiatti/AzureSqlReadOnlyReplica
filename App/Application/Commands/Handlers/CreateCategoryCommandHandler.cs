@@ -19,7 +19,7 @@ namespace App.Application.Commands.Handlers
             var category = Category.Create(command.Name);
 
             if(await _unitOfWork.CategoryRepository.GetByNameAsync(category.Name) is not null)
-                throw new BusinessException($"Already exists a category with the name '{category.Name}'");
+                throw new BusinessException($"Already exists a category with name '{category.Name}'");
             
             category = await _unitOfWork.CategoryRepository.CreateAsync(category);
 

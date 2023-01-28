@@ -15,10 +15,10 @@ namespace App.Domain.Category
             Name = name;
         }
 
-        public static Category Create(string name)
+        public static Category Create(string? name)
         {
             if(string.IsNullOrWhiteSpace(name))
-                throw new BusinessException("Category Name property can not be null");
+                throw new BusinessException("Name property can not be null");
 
             return new Category(Guid.NewGuid(), name);            
         }

@@ -26,18 +26,18 @@ namespace App.Domain.Books
         }
 
         public static Book Create(
-            string name, 
+            string? name, 
             int numberOfPages,
             DateTime releaseDate)
         {
             if(string.IsNullOrWhiteSpace(name))
-                throw new BusinessException("Book Name property can not be null");
+                throw new BusinessException("Name property can not be null");
 
             if(numberOfPages <= 0)
-                throw new BusinessException("Book NumberOfPages property should be greater than or equals to 0");
+                throw new BusinessException("NumberOfPages property should be greater than or equals to 0");
 
             if(releaseDate >= DateTime.Now)
-                throw new BusinessException("Book ReleaseDate property should be lower than now");
+                throw new BusinessException("ReleaseDate property is invalid");
 
             return new Book(
                 Guid.NewGuid(),
