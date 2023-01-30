@@ -15,7 +15,7 @@ namespace App.Domain.Books
         protected BookCategory(Guid id, Book book, Guid categoryId) : base(id)
         {
             Book = book;
-            BookId = BookId;
+            BookId = book.Id;
             CategoryId = categoryId;
         }
 

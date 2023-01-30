@@ -8,7 +8,7 @@ namespace App.Domain.Books
         public string Name { get; private set; } = null!;
         public int NumberOfPages { get; private set; }
         public DateTime ReleaseDate { get; private set; }
-        public ICollection<BookCategory> BookCategories { get; private set; } = new Collection<BookCategory>();
+        public ICollection<BookCategory> BookCategories { get; private set; } = null!;
         
         // EF
         protected Book() : base()
@@ -23,6 +23,7 @@ namespace App.Domain.Books
             Name = name;
             NumberOfPages = numberOfPages;
             ReleaseDate = releaseDate;
+            BookCategories = new Collection<BookCategory>();
         }
 
         public static Book Create(
