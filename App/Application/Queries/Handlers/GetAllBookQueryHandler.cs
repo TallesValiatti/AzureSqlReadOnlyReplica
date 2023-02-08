@@ -19,7 +19,7 @@ namespace App.Application.Queries.Handlers
                 SELECT 
                     *,
                     (SELECT 
-                        STRING_AGG( Categories.Name, ',') 
+                        STRING_AGG( Categories.Name, ', ') 
                     FROM 
                         BookCategories 
                     JOIN 
